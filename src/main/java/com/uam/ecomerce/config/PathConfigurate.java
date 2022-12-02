@@ -9,13 +9,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class PathConfigurate implements WebMvcConfigurer {
 
+    @Value("${ruta.archivos.imagen}")
+    private String ruta;
+
 //    @Value("${ruta.archivos.imagen}")
 //    private String ruta;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
         registry.addResourceHandler("/assets/**")
-                .addResourceLocations("file:/C:/Users/carlo/proyectos/B-Fashion/ecomerce-react_b-fashion/public/assets");
+                .addResourceLocations("file:" + ruta);
     }
 
     /*@Override
